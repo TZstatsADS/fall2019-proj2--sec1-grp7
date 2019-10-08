@@ -1,4 +1,4 @@
-"","ARREST_DATE","CITY_COUNCIL_DISTRICT","Arrest.Count"
+"","ARREST_DATE","cd_id","Arrest.Count"
 "1",2018-09-03,"01",23
 "2",2018-09-03,"02",5
 "3",2018-09-03,"03",19
