@@ -141,7 +141,8 @@ final.cleaned.arrests <- rbind(cleaned.1,cleaned.2,cleaned.3)
 
 final.cleaned.arrests <- final.cleaned.arrests %>%
  group_by(ARREST_DATE,CITY_COUNCIL_DISTRICT) %>%
-  summarise(Arrest.Count = sum(Count))
+  summarise(Arrest.Count = sum(Count)) %>%
+  rename(cd_id = CITY_COUNCIL_DISTRICT)
 
 
 write.csv(final.cleaned.arrests,file = "~/cleaned_NYPD_Arrests.csv")
