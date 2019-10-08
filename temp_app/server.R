@@ -15,6 +15,7 @@ function(input, output, session) {
   #load("./app/DSNY_Graffiti_Tracking.RData")
   #load("./temp_app/DSNY_Graffiti_Tracking.RData")
   load("DSNY_Graffiti_Tracking.RData")
+  load("cleaned_NYPD_Arrests.Rdata")
 
   
   gra_df = gra_df %>% 
@@ -136,7 +137,7 @@ function(input, output, session) {
     })
     
     output$police_plot <- renderPlot({
-      ggplot(data=cleaned_NYPD_df,aes(x=ARREST_DATE,y=Arrest.Count)) +
+      ggplot(data=cleaned_NYPD_df,aes(x=ARREST_DATE,y=Count)) +
           geom_bar(stat = "identity",color = "lightgreen",fill="lightgreen") +
             theme_bw() +
             theme(axis.text.x = element_text(angle = 90,hjust = 1)) +
