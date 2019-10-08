@@ -135,9 +135,13 @@ function(input, output, session) {
 
     })
     
-    # output$ploce_plot <- renderPlot({
-    #   ggplot()
-    # })
+    output$police_plot <- renderPlot({
+      ggplot(data=cleaned_NYPD_df,aes(x=ARREST_DATE,y=Arrest.Count)) +
+          geom_bar(stat = "identity",color = "lightgreen",fill="lightgreen") +
+            theme_bw() +
+            theme(axis.text.x = element_text(angle = 90,hjust = 1)) +
+            labs(x="Month",y="Number of Arrests",title = "Arrests by Month")
+     })
     
   })
 }
