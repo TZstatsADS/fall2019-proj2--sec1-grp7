@@ -13,7 +13,7 @@ library(lubridate)
 
 cleaned_NYPD_2019 <- NYPD_Arrest_Data_Year_to_Date_ %>%
   mutate(ARREST_DATE = lubridate::mdy(ARREST_DATE)) %>%
-  group_by(ARREST_DATE,ARREST_PRECINCT) %>%
+  group_by(ARREST_DATE,ARREST_BORO,ARREST_PRECINCT) %>%
   tally() %>%
   rename(Count = n) 
 
@@ -21,7 +21,7 @@ cleaned_NYPD_2019 <- NYPD_Arrest_Data_Year_to_Date_ %>%
 cleaned_NYPD_2018 <- NYPD_Arrests_Data_Historic_ %>%
   mutate(ARREST_DATE = lubridate::mdy(ARREST_DATE)) %>%
   filter(ARREST_DATE > "2018-09-02" & ARREST_DATE < "2019-01-01") %>%
-  group_by(ARREST_DATE,ARREST_PRECINCT) %>%
+  group_by(ARREST_DATE,ARREST_BORO,ARREST_PRECINCT) %>%
   tally() %>%
   rename(Count = n)
 
@@ -33,7 +33,7 @@ cleaned_NYPD_Arrests <- rbind(cleaned_NYPD_2019,cleaned_NYPD_2018)
 #Changing Police District ID to City Council District ID
 
 cleaned.1 <- cleaned_NYPD_Arrests %>%
-  mutate(CITY_COUNCIL_DISTRICT = if_else(ARREST_PRECINCT == "1" | 
+  mutate(CITY_COUNCIL_DISTRICT = if_else(ARREST_PRECINCT == 1 | 
                                            ARREST_PRECINCT == 5 |
                                            ARREST_PRECINCT == 6 |
                                            ARREST_PRECINCT == 7 |
@@ -142,9 +142,18 @@ final.cleaned.arrests <- rbind(cleaned.1,cleaned.2,cleaned.3)
 final.cleaned.arrests <- final.cleaned.arrests %>%
  group_by(ARREST_DATE,CITY_COUNCIL_DISTRICT) %>%
   summarise(Arrest.Count = sum(Count)) %>%
-  rename(cd_id = CITY_COUNCIL_DISTRICT)
+  rename(cd_id = CITY_COUNCIL_DISTRICT) %>%
+  mutate(borough_id = if_else(cd_id %in% c("01","03","02","04","06","05","08","07","09","10","22","43"),
+                                "1" ,
+                              if_else(cd_id %in% c("08","17","15","13","16","18","14","11","12","10"),
+                                      "2",
+                              if_else(cd_id %in% c("38","37","35","33","34","36","47","44","46","45","39","40","43","42","48","41"),
+                                      "3",
+                              if_else(cd_id %in% c("19","09","32","31","28","24","30","23","26","21","20","29","27","22","25"),
+                                      "4",
+                              if_else(cd_id %in% c("49","50"),"5","NA")))))) %>%
+  mutate(borough_cd_id = as.numeric(paste(borough_id, cd_id, sep = "")))
 
 
 write.csv(final.cleaned.arrests,file = "~/cleaned_NYPD_Arrests.csv")
-
 
