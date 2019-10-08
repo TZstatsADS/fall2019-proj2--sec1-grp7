@@ -10,10 +10,13 @@ library(nycgeo)
 
 function(input, output, session) {
   
-  # gra_df <- read_csv("./data/DSNY_Graffiti_Tracking.csv")
-  # save(gra_df, file = "DSNY_Graffiti_Tracking.RData")
+  #cleaned_NYPD_df <- read_csv("./output/cleaned_NYPD_Arrests.csv")
+  #save(cleaned_NYPD_df, file = "./app/cleaned_NYPD_Arrests.Rdata")
   #load("./app/DSNY_Graffiti_Tracking.RData")
+  #load("./temp_app/DSNY_Graffiti_Tracking.RData")
   load("DSNY_Graffiti_Tracking.RData")
+
+  
   gra_df = gra_df %>% 
     janitor::clean_names() %>% 
   filter(!is.na(latitude) &  !is.na(longitude) & !is.na(city_council_district)) 
@@ -131,5 +134,10 @@ function(input, output, session) {
         labs(x = "Month", y = "Number of complaints", title = "Number of complaints monthly trend")
 
     })
+    
+    # output$ploce_plot <- renderPlot({
+    #   ggplot()
+    # })
+    
   })
 }

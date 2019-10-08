@@ -51,22 +51,15 @@ navbarPage( windowTitle = "NYC Graffiti",
                          leafletOutput("map2", width = "100%", height = "100%"),
                          
                          absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                       draggable = TRUE, top = 60, left = 0, right = 40, bottom = "auto",
+                                       draggable = TRUE, top = 150, left = 0, right = 40, bottom = "auto",
                                        width = 400, height = "auto",
-                                       
-                                       h3("Panel"),
-                                       
-                                       plotOutput("month_trend", height = 280)
-                                       
-                         ),
-                         
-                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                       draggable = F, top = 60, left = "auto", right = 0, bottom = "auto",
-                                       width = 160, height = 120,
                                        br(),
                                        radioButtons("selectb", label = "Layers",
                                                     choices = list("Count" = "count", "Close Rate" = "close_rate"), 
-                                                    selected = "count")
+                                                    selected = "count"),
+                                       
+                                       plotOutput("month_trend", height = 280)
+                                       #plotOutput("police_plot", height = 280)
                                        
                          )
                      )
