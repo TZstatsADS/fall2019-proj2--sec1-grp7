@@ -58,7 +58,7 @@ navbarPage( windowTitle = "NYC Graffiti",
                                                     choices = list("Count" = "count", "Close Rate" = "close_rate"), 
                                                     selected = "count"),
                                        
-                                       plotOutput("month_trend", height = 280)
+                                       plotOutput("month_trend", height = 280),
                                        plotOutput("police_plot", height = 280)
                                        
                          )
