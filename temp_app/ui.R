@@ -59,7 +59,7 @@ navbarPage( windowTitle = "NYC Graffiti",
                                                     selected = "count"),
                                        
                                        plotOutput("month_trend", height = 280)
-                                       #plotOutput("police_plot", height = 280)
+                                       plotOutput("police_plot", height = 280)
                                        
                          )
                      )
