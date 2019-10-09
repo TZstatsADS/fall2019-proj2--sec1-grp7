@@ -28,7 +28,9 @@ Term: Fall 2019
 	+ Yicheng Li
 	+ Kangkang Zhang
 
-+ **Project summary**: The purpose of this app is to give city officials, and other interested parties, a way to visualize graffiti complaints in NYC. The app allows users to track the rate of graffiti complaints, the rate that they are resolved, and the different types of resolution action. 
++ **Project summary**: Graffiti Free NYC is a program run by the Economic Development Corporation and the Department of Sanitation that offers free graffiti removal across New York City. The data used in this application represents the complaints filed through this program. The data includes information on date and location of the complaint, as well as the resolution status of the report.
+
+The purpose of this app is to give city officials, and other interested parties, a way to visualize graffiti complaints in NYC. The app allows users to track the rate of graffiti complaints, the rate that they are resolved, and the different types of resolution action.
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
