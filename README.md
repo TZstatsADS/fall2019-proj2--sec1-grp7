@@ -18,6 +18,9 @@ The **learning goals** for this project is:
 *The above general statement about project 2 can be removed once you are finished with your project. It is optional.
 
 ## Tracking Graffiti in NYC
+
+Link to our shiny app: [https://kkz777.shinyapps.io/project2_demo/](https://kkz777.shinyapps.io/project2_demo/)
+
 Term: Fall 2019
 
 + Team # 7
