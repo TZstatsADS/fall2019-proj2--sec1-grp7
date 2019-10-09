@@ -28,7 +28,7 @@ Term: Fall 2019
 	+ Yicheng Li
 	+ Kangkang Zhang
 
-+ **Project summary**: The purpose of this app is to give city officials, and other interested parties, a way to visualize graffiti complaints in NYC. The app allows users to track the rate of graffiti complaints, the rate that they are resolved, and the relationship between graffiti complaints and police activity. 
++ **Project summary**: The purpose of this app is to give city officials, and other interested parties, a way to visualize graffiti complaints in NYC. The app allows users to track the rate of graffiti complaints, the rate that they are resolved, and the different types of resolution action. 
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
