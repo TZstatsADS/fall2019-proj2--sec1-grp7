@@ -33,6 +33,13 @@ The purpose of this app is to give city officials, and other interested parties,
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
++ Ting Cai
++ Alexandra DeKinder
++ Richard Lee
++ Yicheng Li
++ Kangkang Zhang： Designed and finalized the general layouts of this shiny app; cleaned the borough community district related data, calculated count and close rate, designed, built and made all functions work in Heat Map tab panel; integrated the shiny app.
+
+
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
 ```
