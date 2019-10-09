@@ -174,7 +174,7 @@ function(input, output, session) {
       gra_df %>% mutate(shown_date = format.Date(as.Date(created_date, format = "%m/%d/%Y"), "%b %y"),
                         sort_date = format(as.Date(created_date, format = "%m/%d/%Y"), "%Y%m")) %>%
         mutate(cd_id = as.character(as.numeric(str_extract(city_council_district, "[[:digit:]]+")))) %>%
-        filter(borough_cd_id == "101") %>%
+        filter(borough_cd_id == event$id) %>%
         group_by(shown_date, sort_date) %>%
         dplyr::summarize(ttl = n()) %>%
         ungroup() %>%
