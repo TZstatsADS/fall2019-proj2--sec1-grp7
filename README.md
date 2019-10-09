@@ -36,7 +36,7 @@ The purpose of this app is to give city officials, and other interested parties,
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
-+ Ting Cai
++ Ting Cai: data cleaning and data manipulation for the map; built and made all functions work in Spot Map tab panel; presenter of this project.
 + Alexandra DeKinder
 + Richard Lee
 + Yicheng Li
