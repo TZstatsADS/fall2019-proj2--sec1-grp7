@@ -119,7 +119,28 @@ navbarPage(windowTitle = "NYC Graffiti",
            tabPanel("About", icon = icon("info"),
                     fluidRow(),
                     fluidRow(),
-                    hr()
+                    hr(),
+                    mainPanel(
+                      h2("About Graffiti NYC"),
+                      h3("Team Members:Ting Cai, Alexandra DeKinder, Richard Lee, Yicheng Li, Kangkang Zhang"),
+                      p("Graffiti Free NYC is a program run by the Economic Development 
+                          Corporation and the Department of Sanitation that offers 
+                          free graffiti removal across New York City. The data used in 
+                          this application represents the complaints filed through this 
+                          program. The data includes information on date and location of 
+                          the complaint, as well as the resolution status of the report."),
+                      
+                      p("The purpose of this app is to give city officials, and interested 
+                        residents, a way to visualize and track the graffiti reports and 
+                        resolution rates of the program. The first page includes a spot map 
+                        that allows the user to see individual instances of reports in a 
+                        selected date range. There is also a filter to see open, closed, and 
+                        pending reports and the resolution action taken. The heat map shows 
+                        the frequency and resolution rate by community board districts. The 
+                        third tab titled Frequencies shows summarization of the data by 
+                        borough, type of resolution, and another map that gives the user 
+                        another way of visualizing the data.")
+                    )
            )
            
 )
