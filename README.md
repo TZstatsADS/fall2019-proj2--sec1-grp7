@@ -38,7 +38,7 @@ The purpose of this app is to give city officials, and other interested parties,
 
 + Ting Cai: data cleaning and data manipulation for the map; built and made all functions work in Spot Map tab panel; presenter of this project.
 + Alexandra DeKinder
-+ Richard Lee
++ Richard Lee: Created the plots and figures that can be seen in the frequencies panel; created function to switch between the diffrent types of charts in UI.R and server.R; uploaded figures such as Borough Freqeuncy, Resolution Frequency, Longitude vs Latitude, and Mapping charts for further analysis
 + Yicheng Li
 + Kangkang Zhang： Designed and finalized the general layouts of this shiny app; cleaned the borough community district related data, calculated count and close rate, designed, built and made all functions work in Heat Map tab panel; integrated the shiny app.
 
