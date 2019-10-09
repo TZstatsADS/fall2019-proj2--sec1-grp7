@@ -76,7 +76,7 @@ navbarPage(windowTitle = "NYC Graffiti",
                         leafletOutput("map2", width = "100%", height = "100%"),
                         
                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                      draggable = TRUE, top = 150, left = 0, right = 40, bottom = "auto",
+                                      draggable = TRUE, top = 120, left = 0, right = 40, bottom = "auto",
                                       width = 400, height = "auto",
                                       br(),
                                       radioButtons("selectb", label = strong("Layers"),
@@ -85,8 +85,7 @@ navbarPage(windowTitle = "NYC Graffiti",
                                       
                                       p(strong("Click on a community district to see the time trend of number of graffiti complaints.")),
                                       
-                                      plotOutput("month_trend", height = 280),
-                                      plotOutput("police_plot", height = 280)
+                                      plotOutput("month_trend", height = 280)
                                       
                         )
                     )

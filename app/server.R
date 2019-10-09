@@ -10,40 +10,6 @@ library(nycgeo)
 
 function(input, output, session) {
   
-  # cleaned_NYPD_df <- read_csv("./output/cleaned_NYPD_Arrests.csv")
-  # save(cleaned_NYPD_df, file = "./temp_app/cleaned_NYPD_Arrests.Rdata")
-  #load("./temp_app/DSNY_Graffiti_Tracking.RData")
-  #load("./temp_app/DSNY_Graffiti_Tracking.RData")
-  load("DSNY_Graffiti_Tracking.RData")
-  load("cleaned_NYPD_Arrests.Rdata")
-  
-  nhyc_cd_data <- cd_sf
-  
-  gra_df = gra_df %>% 
-    janitor::clean_names() %>% 
-    filter(!is.na(latitude) &  !is.na(longitude) & !is.na(city_council_district)) %>%
-    mutate(cd_id = str_extract(community_board, "[[:digit:]]+"),
-           borough_id = case_when(
-             borough == "MANHATTAN" ~ "1",
-             borough == "BRONX" ~ "2",
-             borough == "BROOKLYN" ~ "3",
-             borough == "QUEENS" ~ "4",
-             borough == "STATEN ISLAND" ~ "5"),
-           borough_cd_id = str_c(borough_id, cd_id))
-  
-  temp_df =  gra_df %>% 
-    filter(status == "Closed") %>% 
-    group_by(borough_cd_id, status) %>% 
-    summarise(close_count = n()) %>%
-    left_join(gra_df %>% 
-                group_by(borough_cd_id) %>% 
-                summarise(ttl_count = n()), by = "borough_cd_id") %>%  
-    mutate(close_rate = close_count/ttl_count) %>%
-    ungroup() 
-  
-  map_data <- geo_join(nhyc_cd_data, temp_df, "borough_cd_id",  "borough_cd_id", how = "inner") %>% 
-    mutate(ttl_count = as.numeric(ttl_count), close_rate = as.numeric(close_rate))
-  
   #############tab 1###################
   choices <- c("Select All", "Cleaning crew dispatched", 
                "Cannot identify property owner",
@@ -109,6 +75,35 @@ function(input, output, session) {
     m
   })
   #############tab 2 ###############
+
+  load("DSNY_Graffiti_Tracking.RData")
+  
+  nhyc_cd_data <- cd_sf
+  
+  gra_df = gra_df %>% 
+    janitor::clean_names() %>% 
+    filter(!is.na(latitude) &  !is.na(longitude) & !is.na(city_council_district)) %>%
+    mutate(cd_id = str_extract(community_board, "[[:digit:]]+"),
+           borough_id = case_when(
+             borough == "MANHATTAN" ~ "1",
+             borough == "BRONX" ~ "2",
+             borough == "BROOKLYN" ~ "3",
+             borough == "QUEENS" ~ "4",
+             borough == "STATEN ISLAND" ~ "5"),
+           borough_cd_id = str_c(borough_id, cd_id))
+  
+  temp_df =  gra_df %>% 
+    filter(status == "Closed") %>% 
+    group_by(borough_cd_id, status) %>% 
+    summarise(close_count = n()) %>%
+    left_join(gra_df %>% 
+                group_by(borough_cd_id) %>% 
+                summarise(ttl_count = n()), by = "borough_cd_id") %>%  
+    mutate(close_rate = close_count/ttl_count) %>%
+    ungroup() 
+  
+  map_data <- geo_join(nhyc_cd_data, temp_df, "borough_cd_id",  "borough_cd_id", how = "inner") %>% 
+    mutate(ttl_count = as.numeric(ttl_count), close_rate = as.numeric(close_rate))
   
   output$map2 <- renderLeaflet({
     
@@ -185,35 +180,6 @@ function(input, output, session) {
         theme_bw() +
         theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
         labs(x = "Month", y = "Number of complaints", title = "Number of complaints monthly trend")
-    })
-  })
-  
-  observe({
-    #whenever map item is clicked, becomes event
-    event <- input$map2_shape_click
-    if (is.null(event))
-      return()
-    
-    output$police_plot <- renderPlot({
-      #returns null if no borough selected
-      if (is.na(event$id)) {
-        return(NULL)
-      }
-      
-      cleaned_NYPD_df %>% 
-        mutate(shown_date = format.Date(ARREST_DATE, "%b %y"),
-               sort_date = format.Date(ARREST_DATE, "%Y%m")) %>%
-        filter(borough_cd_id == as.numeric(event$id)) %>%
-        group_by(shown_date, sort_date) %>%
-        dplyr::summarize(ttl = sum(Arrest.Count)) %>%
-        ungroup() %>%
-        arrange(sort_date) %>%
-        mutate(shown_date = factor(shown_date, levels = shown_date)) %>%
-        ggplot(aes(x=shown_date, y = ttl)) +
-        geom_bar(stat="identity", na.rm = TRUE, color="orange", fill = "orange") +
-        theme_bw() +
-        theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-        labs(x = "Month", y = "Number of arrests", title = "Number of arrests monthly trend")
     })
   })
   
