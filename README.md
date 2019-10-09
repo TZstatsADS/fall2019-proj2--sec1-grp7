@@ -36,12 +36,11 @@ The purpose of this app is to give city officials, and other interested parties,
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
-+ Ting Cai: data cleaning and data manipulation for the map; built and made all functions work in Spot Map tab panel; presenter of this project.
-+ Alexandra DeKinder
-+ Richard Lee: Created the plots and figures that can be seen in the frequencies panel; created function to switch between the diffrent types of charts in UI.R and server.R; uploaded figures such as Borough Freqeuncy, Resolution Frequency, Longitude vs Latitude, and Mapping charts for further analysis
-+ Yicheng Li
-+ Kangkang Zhang： Designed and finalized the general layouts of this shiny app; cleaned the borough community district related data, calculated count and close rate, designed, built and made all functions work in Heat Map tab panel; integrated the shiny app.
-
++ Yicheng Li proposed the topic of the analysis and acquired the primary dataset. He designed the workflow of the analysis. He also performed data cleaning, data analysis and eda to identify the factors to be analyzed.  
++ Ting Cai mainly worked on the Spot Map tab of the app where she built and made all functions work in the panel. She also performed data cleaning and data manipulation for the maps. She is also the presenter of this project.
++ Kangkang Zhang designed, built and made all functions work in the Heat Map tab panel where she cleaned the borough community district related data and calculated count and close rate, She also designed and finalized the general layouts of this shiny app and integrated the app.
++ Richard Lee created the plots and figures that can be seen in the Frequencies panel. He also created the function to switch between the different types of charts in UI.R and server.R; uploaded figures such as Borough Frequency, Resolution Frequency, Longitude vs Latitude, and Mapping charts for further analysis.
++ Alexandra DeKinder built the About tab and provided a detailed summary of the app in the tab to address the objective of this project and give instructions to the target users. She also investigated in supplementary datasets from different sources.
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
